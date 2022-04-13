@@ -5,18 +5,23 @@ import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from './utils'
 //contexto criado para inserir e enviar valores
 export const AuthContext = createContext<IContext>({} as IContext)
 
+//controla o estado de login e logout
 export const AuthProvider = ({ children }: IAuthProvider) => {
   const [user, setUser] = useState<IUser | null>()
 
   useEffect(() => {
     const user = getUserLocalStorage();
 
-    if(user) setUser(user);
+    if(user){
+      setUser(user);
+    } 
+ 
   }, [])
 
   async function authenticate (email: string, password: string){
     const response = await LoginRequest(email, password)
-
+    console.log(response);
+    
     const payload = { token: response.token, email}
 
     setUser(payload) //salvando no context
