@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter , Route, Switch } from 'react-router-dom'
 import { Login } from './components/Login'
 import { ProtectedLayout } from './components/ProtectedLayout'
@@ -12,7 +11,7 @@ function App() {
         <Switch>
           <Route path="/profile">
             <ProtectedLayout>
-              <h2>Hello, this's profile component</h2>
+              <h2>Hello, this's profile component but</h2>
             </ProtectedLayout>
           </Route>
           <Route path="/login">
